@@ -236,43 +236,43 @@ public class ProductServiceImpl  implements ProductService{
 	}
 
 
-//	@Override
-//	public ProductDTO updateProduct(Long productId, Product product) {
-//	
-//		Product productFromDB = productRepo.findById(productId)
-//				.orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
-//
-//		if (productFromDB == null) {
-//			throw new APIException("Product not found with productId: " + productId);
-//		}
-//
-//		product.setImage(productFromDB.getImage());
-//		product.setProductId(productId);
-//		product.setCategory(productFromDB.getCategory());
-//
-//		double specialPrice = product.getPrice() - ((product.getDiscount() * 0.01) * product.getPrice());
-//		product.setSpecialPrice(specialPrice);
-//
-//		Product savedProduct = productRepo.save(product);
-//
-//		List<Cart> carts = cartRepo.findCartsByProductId(productId);
-//
-//		List<CartDTO> cartDTOs = carts.stream().map(cart -> {
-//			CartDTO cartDTO = modelMapper.map(cart, CartDTO.class);
-//
-//			List<ProductDTO> products = cart.getCartItems().stream()
-//					.map(p -> modelMapper.map(p.getProduct(), ProductDTO.class)).collect(Collectors.toList());
-//
-//			cartDTO.setProducts(products);
-//
-//			return cartDTO;
-//
-//		}).collect(Collectors.toList());
-//
-//		cartDTOs.forEach(cart -> cartService.updateProductInCarts(cart.getCartId(), productId));
-//
-//		return modelMapper.map(savedProduct, ProductDTO.class);
-//	}
+	@Override
+	public ProductDTO updateProduct(Long productId, Product product) {
+	
+		Product productFromDB = productRepo.findById(productId)
+				.orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
+
+		if (productFromDB == null) {
+			throw new APIException("Product not found with productId: " + productId);
+		}
+
+		product.setImage(productFromDB.getImage());
+		product.setProductId(productId);
+		product.setCategory(productFromDB.getCategory());
+
+		double specialPrice = product.getPrice() - ((product.getDiscount() * 0.01) * product.getPrice());
+		product.setSpecialPrice(specialPrice);
+
+		Product savedProduct = productRepo.save(product);
+
+		List<Cart> carts = cartRepo.findCartsByProductId(productId);
+
+		List<CartDTO> cartDTOs = carts.stream().map(cart -> {
+			CartDTO cartDTO = modelMapper.map(cart, CartDTO.class);
+
+			List<ProductDTO> products = cart.getCartItems().stream()
+					.map(p -> modelMapper.map(p.getProduct(), ProductDTO.class)).collect(Collectors.toList());
+
+			cartDTO.setProducts(products);
+
+			return cartDTO;
+
+		}).collect(Collectors.toList());
+
+		cartDTOs.forEach(cart -> cartService.updateProductInCarts(cart.getCartId(), productId));
+
+		return modelMapper.map(savedProduct, ProductDTO.class);
+	}
 
 
 	@Override

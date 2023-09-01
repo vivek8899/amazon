@@ -3,6 +3,7 @@ package com.amazonclone.Amazon_Backend.controllers;
 import java.io.IOException;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,15 +97,15 @@ public class ProductController {
 		return new ResponseEntity<ProductResponse>(productResponse, HttpStatus.FOUND);
 	}
 	
-//	
-//	@PutMapping("/admin/products/{productId}")
-//	public ResponseEntity<ProductDTO> updateProduct(@RequestBody Product product,
-//			@PathVariable Long productId) {
-//		ProductDTO updatedProduct = productService.updateProduct(productId, product);
-//
-//		return new ResponseEntity<ProductDTO>(updatedProduct, HttpStatus.OK);
-//	}
-//	
+	
+	@PutMapping("/admin/products/{productId}")
+	public ResponseEntity<ProductDTO> updateProduct(@RequestBody Product product,
+			@PathVariable Long productId) {
+		ProductDTO updatedProduct = productService.updateProduct(productId, product);
+
+		return new ResponseEntity<ProductDTO>(updatedProduct, HttpStatus.OK);
+	}
+	
 	@PutMapping("/admin/products/{productId}/image")
 	public ResponseEntity<ProductDTO> updateProductImage(@PathVariable Long productId, @RequestParam("image") MultipartFile image) throws IOException {
 		ProductDTO updatedProduct = productService.updateProductImage(productId, image);
@@ -120,7 +121,7 @@ public class ProductController {
 	}
 	
 	
-	//All prodcut list without pagination
+	//All pradmin/products/odcut list without pagination
 //	@GetMapping("/public/products")
 //	public ResponseEntity<List<ProductDTO>> getAllProducts(){
 //
