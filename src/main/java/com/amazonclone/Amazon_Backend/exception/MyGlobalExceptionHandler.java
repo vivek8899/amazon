@@ -53,19 +53,19 @@ public class MyGlobalExceptionHandler {
 		return new ResponseEntity<Map<String, String>>(res, HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(ConstraintViolationException.class)
-	public ResponseEntity<Map<String, String>> myConstraintsVoilationException(ConstraintViolationException e) {
-		Map<String, String> res = new HashMap<>();
-
-		e.getConstraintViolations().forEach(voilation -> {
-			String fieldName = voilation.getPropertyPath().toString();
-			String message = voilation.getMessage();
-
-			res.put(fieldName, message);
-		});
-
-		return new ResponseEntity<Map<String, String>>(res, HttpStatus.BAD_REQUEST);
-	}
+//	@ExceptionHandler(ConstraintViolationException.class)
+//	public ResponseEntity<Map<String, String>> myConstraintsVoilationException(ConstraintViolationException e) {
+//		Map<String, String> res = new HashMap<>();
+//
+//		e.getConstraintViolations().forEach(voilation -> {
+//			String fieldName = voilation.getPropertyPath().toString();
+//			String message = voilation.getMessage();
+//
+//			res.put(fieldName, message);
+//		});
+//
+//		return new ResponseEntity<Map<String, String>>(res, HttpStatus.BAD_REQUEST);
+//	}
 	
 //	@ExceptionHandler(AuthenticationException.class)
 //	public ResponseEntity<String> myAuthenticationException(AuthenticationException e) {
