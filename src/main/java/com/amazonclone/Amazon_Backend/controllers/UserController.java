@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amazonclone.Amazon_Backend.dto.UserDTO;
-
+import com.amazonclone.Amazon_Backend.entities.User;
 import com.amazonclone.Amazon_Backend.services.UserService;
 
 
@@ -40,6 +40,14 @@ public class UserController {
 		
 		return new ResponseEntity<List<UserDTO>>(userResponse, HttpStatus.FOUND);
 	}
+//	
+//	@GetMapping("/admin/user")
+//	public ResponseEntity<List<User>> getUser() {
+//		
+//		List<User> userResponse = userService.getUsers();
+//		
+//		return new ResponseEntity<List<User>>(userResponse, HttpStatus.FOUND);
+//	}
 	
 	
 	@GetMapping("/public/users/{userId}")

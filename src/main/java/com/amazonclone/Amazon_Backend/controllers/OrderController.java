@@ -74,6 +74,7 @@ public class OrderController {
 	
 	@PutMapping("admin/users/{emailId}/orders/{orderId}/orderStatus/{orderStatus}")
 	public ResponseEntity<OrderDTO> updateOrderByUser(@PathVariable String emailId, @PathVariable Long orderId, @PathVariable String orderStatus) {
+		System.out.println("hi here come");
 		OrderDTO order = orderService.updateOrder(emailId, orderId, orderStatus);
 		
 		return new ResponseEntity<OrderDTO>(order, HttpStatus.OK);

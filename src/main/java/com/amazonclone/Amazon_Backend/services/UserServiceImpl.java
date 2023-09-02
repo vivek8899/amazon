@@ -99,12 +99,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	
+	
+	
+	
 	@Override
 	public List<UserDTO> getAllUsers() {
 		List<User> users = userRepo.findAll();
-		if (users.size() == 0) {
-			throw new APIException("No User exists !!!");
-		}
+	
 		List<UserDTO> userDTOs = users.stream().map(user -> {
 			UserDTO dto = modelMapper.map(user, UserDTO.class);
 
@@ -228,6 +230,17 @@ public class UserServiceImpl implements UserService {
 
 		return "User with userId " + userId + " deleted successfully!!!";
 	
+	}
+
+
+
+
+
+
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return userRepo.findAll();
 	}
 
 	

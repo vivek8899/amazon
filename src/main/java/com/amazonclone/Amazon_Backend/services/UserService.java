@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.amazonclone.Amazon_Backend.dto.UserDTO;
+import com.amazonclone.Amazon_Backend.entities.User;
 
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
 	UserDTO getUserById(Long userId);
 	UserDTO updateUser(Long userId, UserDTO userDTO);
 	String deleteUser(Long userId);
+	
+	List<User> getUsers();
 }
