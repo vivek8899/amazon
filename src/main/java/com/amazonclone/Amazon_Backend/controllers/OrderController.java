@@ -19,11 +19,14 @@ import com.amazonclone.Amazon_Backend.dto.OrderDTO;
 import com.amazonclone.Amazon_Backend.dto.OrderResponse;
 import com.amazonclone.Amazon_Backend.services.OrderService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Order")
 public class OrderController {
 
 	@Autowired

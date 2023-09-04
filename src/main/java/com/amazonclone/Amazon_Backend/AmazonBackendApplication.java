@@ -29,6 +29,7 @@ public class AmazonBackendApplication {
 
 	@Bean
 	public ModelMapper modelMapper() {
+		
 		return new ModelMapper();
 	}
 

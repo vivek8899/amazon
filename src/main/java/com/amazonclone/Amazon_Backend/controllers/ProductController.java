@@ -28,12 +28,14 @@ import com.amazonclone.Amazon_Backend.services.ProductService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Product")
 public class ProductController {
 
 	

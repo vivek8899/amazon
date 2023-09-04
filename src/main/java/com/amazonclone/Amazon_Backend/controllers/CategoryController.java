@@ -20,11 +20,12 @@ import com.amazonclone.Amazon_Backend.dto.CategoryDTO;
 import com.amazonclone.Amazon_Backend.entities.Category;
 import com.amazonclone.Amazon_Backend.services.CategoryService;
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Category")
 public class CategoryController {
 	
 	@Autowired

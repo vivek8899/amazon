@@ -21,25 +21,28 @@ import com.amazonclone.Amazon_Backend.dto.UserDTO;
 import com.amazonclone.Amazon_Backend.entities.User;
 import com.amazonclone.Amazon_Backend.services.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 
 
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "User")
 public class UserController {
 
 	@Autowired
 	private UserService userService;	
 	
 	
-	@GetMapping("/admin/users")
-	public ResponseEntity<List<UserDTO>> getUsers() {
-		
-		List<UserDTO> userResponse = userService.getAllUsers();
-		
-		return new ResponseEntity<List<UserDTO>>(userResponse, HttpStatus.FOUND);
-	}
+//	@GetMapping("/admin/users")
+//	public ResponseEntity<List<UserDTO>> getUsers() {
+//		
+//		List<UserDTO> userResponse = userService.getAllUsers();
+//		
+//		return new ResponseEntity<List<UserDTO>>(userResponse, HttpStatus.FOUND);
+//	}
 //	
 //	@GetMapping("/admin/user")
 //	public ResponseEntity<List<User>> getUser() {

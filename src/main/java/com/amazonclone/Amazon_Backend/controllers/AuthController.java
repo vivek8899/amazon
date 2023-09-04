@@ -23,11 +23,12 @@ import com.amazonclone.Amazon_Backend.dto.UserDTO;
 import com.amazonclone.Amazon_Backend.exception.UserNotFoundException;
 import com.amazonclone.Amazon_Backend.services.UserService;
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Authentication")
 public class AuthController {
 
 	

@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amazonclone.Amazon_Backend.dto.CartDTO;
 import com.amazonclone.Amazon_Backend.services.CartService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Cart")
 public class CartController {
 	
 	@Autowired

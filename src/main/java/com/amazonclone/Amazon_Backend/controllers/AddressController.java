@@ -19,11 +19,13 @@ import com.amazonclone.Amazon_Backend.dto.AddressDTO;
 import com.amazonclone.Amazon_Backend.entities.Address;
 import com.amazonclone.Amazon_Backend.services.AddressService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 
 @RestController
 @RequestMapping("/api/admin")
+@Tag(name = "Address")
 public class AddressController {
 
 	

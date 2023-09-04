@@ -3,8 +3,7 @@ package com.amazonclone.Amazon_Backend.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
