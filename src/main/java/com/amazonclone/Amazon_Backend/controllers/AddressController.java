@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,17 +25,18 @@ import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api")
 @Tag(name = "Address")
+@CrossOrigin
 public class AddressController {
 
 	
 	@Autowired
 	private AddressService addressService;
 	
-	@PostMapping("/address/{id}")
+	@PostMapping("public/address/{userId}")
 	public ResponseEntity<AddressDTO> addUserAddress(@Valid @RequestBody AddressDTO addressDTO,
-			@PathVariable ("id") Long userId) {
+			@PathVariable ("userId") Long userId) {
 		AddressDTO savedAddressDTO = addressService.createAddressForUser(addressDTO, userId);
 		
 		return new ResponseEntity<AddressDTO>(savedAddressDTO, HttpStatus.CREATED);
@@ -42,35 +44,35 @@ public class AddressController {
 	
 	
 	
-	@PostMapping("/address")
+	@PostMapping("admin/address")
 	public ResponseEntity<AddressDTO> createAddress(@Valid @RequestBody AddressDTO addressDTO) {
 		AddressDTO savedAddressDTO = addressService.createAddress(addressDTO);
 		
 		return new ResponseEntity<AddressDTO>(savedAddressDTO, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/addresses")
+	@GetMapping("admin/addresses")
 	public ResponseEntity<List<AddressDTO>> getAddresses() {
 		List<AddressDTO> addressDTOs = addressService.getAddresses();
 		
 		return new ResponseEntity<List<AddressDTO>>(addressDTOs, HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/addresses/{addressId}")
+	@GetMapping("admin/addresses/{addressId}")
 	public ResponseEntity<AddressDTO> getAddress(@PathVariable Long addressId) {
 		AddressDTO addressDTO = addressService.getAddress(addressId);
 		
 		return new ResponseEntity<AddressDTO>(addressDTO, HttpStatus.FOUND);
 	}
 	
-	@PutMapping("/addresses/{addressId}")
+	@PutMapping("public/addresses/{addressId}")
 	public ResponseEntity<AddressDTO> updateAddress(@PathVariable Long addressId, @RequestBody Address address) {
 		AddressDTO addressDTO = addressService.updateAddress(addressId, address);
 		
 		return new ResponseEntity<AddressDTO>(addressDTO, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/addresses/{addressId}")
+	@DeleteMapping("admin/addresses/{addressId}")
 	public ResponseEntity<String> deleteAddress(@PathVariable Long addressId) {
 		String status = addressService.deleteAddress(addressId);
 		

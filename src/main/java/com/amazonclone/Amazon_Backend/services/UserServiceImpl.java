@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -66,23 +67,23 @@ public class UserServiceImpl implements UserService {
 			Role role = roleRepo.findById(AppConstants.USER_ID).get();
 			user.getRoles().add(role);
 
-			String country = userDTO.getAddress().getCountry();
-			String state = userDTO.getAddress().getState();
-			String city = userDTO.getAddress().getCity();
-			String pincode = userDTO.getAddress().getPincode();
-			String street = userDTO.getAddress().getStreet();
-			String buildingName = userDTO.getAddress().getBuildingName();
+			String country = "Default";
+			String state = "Default";
+			String city = "Default";
+			String pincode = "000000";
+			String street = "default";
+			String buildingName = "default";
 
-			Address address = addressRepo.findByCountryAndStateAndCityAndPincodeAndStreetAndBuildingName(country, state,
-					city, pincode, street, buildingName);
-
-			if (address == null) {
-				address = new Address(country, state, city, pincode, street, buildingName);
-
-				address = addressRepo.save(address);
+			Address addressFromDB = addressRepo.findByCountryAndStateAndCityAndPincodeAndStreetAndBuildingName(country,
+					state, city, pincode, street, buildingName);
+			if(addressFromDB == null) {
+				
+				Address address = new Address(country, state, city, pincode, street, buildingName);
+				addressFromDB = addressRepo.save(address);
 			}
-
-			user.setAddresses(List.of(address));
+			
+		
+			user.setAddresses(List.of(addressFromDB));
 
 			User registeredUser = userRepo.save(user);
 
